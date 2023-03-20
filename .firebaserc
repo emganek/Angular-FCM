@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angularcarsh": {
+      "hosting": {
+        "PROJECT-NAME": [
+          "angularcarsh"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angularcarsh"
+  }
+}
