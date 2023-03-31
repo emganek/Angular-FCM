@@ -10,7 +10,8 @@ firebase.initializeApp({
     projectId: "angularcarsh",
     storageBucket: "angularcarsh.appspot.com",
     messagingSenderId: "901028259185",
-    appId: "1:901028259185:web:04eae6a3afa5dd625802d0"
+    appId: "1:901028259185:web:04eae6a3afa5dd625802d0",
+    measurementId: 'G-EDGXMLKVKQ'
 })
 
 // Retrieve an instance of Firebase Messaging so that it can handle background

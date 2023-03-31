@@ -16,8 +16,9 @@ import {
   updateDoc,
   runTransaction,
 } from '@angular/fire/firestore';
+import { Analytics, logEvent } from '@angular/fire/analytics';
 import { getMessaging, getToken, onMessage } from '@angular/fire/messaging';
-import { environment } from "../environments/environment";
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -40,10 +41,14 @@ export class AppComponent implements OnInit, OnDestroy {
   inProgressCollection: any;
   doneCollection: any;
   title = 'af-notification';
-  message:any = null;
-  fcmToken!:string;
+  message: any = null;
+  fcmToken!: string;
 
-  constructor(private dialog: MatDialog, private store: Firestore) {
+  constructor(
+    private dialog: MatDialog,
+    private store: Firestore,
+    private analytics: Analytics
+  ) {
     this.todoCollection = collection(store, this.COLLECTION_NAME.todo);
     this.inProgressCollection = collection(
       store,
@@ -119,6 +124,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   newTask(): void {
+    logEvent(this.analytics, 'add_new_task', {
+      location: 'home page',
+      action: 'click on plus icon',
+      my_firebase_ga:"development"
+    });
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '270px',
       data: {
@@ -192,7 +202,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .then((currentToken) => {
         if (currentToken) {
           const tokenCollection = collection(this.store, 'FcmToken');
-          addDoc(tokenCollection, {token: currentToken});
+          addDoc(tokenCollection, { token: currentToken });
           console.log('Hurraaa!!! we got the token.....');
           console.log(currentToken);
           this.fcmToken = currentToken;
@@ -208,7 +218,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   listenMessage() {
-    console.log("start listenninggggggggggggggggggggg")
+    console.log('start listenninggggggggggggggggggggg');
     const messaging = getMessaging();
     onMessage(messaging, (payload) => {
       console.log('Message received. ', payload);

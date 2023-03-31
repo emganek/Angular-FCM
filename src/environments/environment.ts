@@ -10,7 +10,8 @@ export const environment = {
     apiKey: 'AIzaSyDyXQXVHV6MuvDvAFSp6X1_zxwBR024MMg',
     authDomain: 'angularcarsh.firebaseapp.com',
     messagingSenderId: '901028259185',
-    vapidKey: 'BD3RbcMLLgLIkVzNLb8iRhaOmkuZDT6VbWa-uJj_1SIPq6vF3sD6cu-5QkhnMu8bhYBiNmBOAGoPuZYJ3ZSuOMA'
+    vapidKey: 'BD3RbcMLLgLIkVzNLb8iRhaOmkuZDT6VbWa-uJj_1SIPq6vF3sD6cu-5QkhnMu8bhYBiNmBOAGoPuZYJ3ZSuOMA',
+    measurementId: 'G-EDGXMLKVKQ'
   },
   production: false
 };

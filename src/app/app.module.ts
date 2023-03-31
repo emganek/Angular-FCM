@@ -17,6 +17,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideMessaging, getMessaging } from '@angular/fire/messaging';
+import { provideAnalytics, getAnalytics } from '@angular/fire/analytics';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { provideMessaging, getMessaging } from '@angular/fire/messaging';
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideAnalytics(() => getAnalytics())
   ],
   providers: [],
   bootstrap: [AppComponent]
